@@ -41,10 +41,28 @@ Router.post("/signup",async(req,res)=>{
 
 /*
 Route     /signin
-Desc      signup with email and password
+Desc      signin with email and password
 Params    NONE
 Access    PUBLIC
 Method    POST
 */
+
+Router.post("/signin",async(req,res)=>{
+    try {
+
+        //check if email exists
+        const user = await UserModel.findByEmailAndPassword(req.body.credentials);
+
+
+        //token genereation
+        const token = user.generateJwtToken();
+
+        //return success
+        return res.status(200).json({token,status:"success"});
+
+    } catch (error) {
+        return res.status(500).json({error:error.message})
+    }
+});
 
 export default Router;

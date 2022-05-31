@@ -10,6 +10,7 @@ import helmet from "helmet";
 
 //microservices routes
 import Auth from "./API/Auth";
+import Restaurant from "./API/Restaurant";
 
 //db connection
 import ConnectDB from "./database/connections";
@@ -25,6 +26,7 @@ tomato.use(cors());
 
 //application routes
 tomato.use("/auth",Auth);
+tomato.use("/restaurant",Restaurant);
 
 tomato.get("/",(req,res) => res.json({message: "running"}));
 

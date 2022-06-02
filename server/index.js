@@ -12,6 +12,7 @@ import helmet from "helmet";
 import Auth from "./API/Auth";
 import Restaurant from "./API/Restaurant";
 import Food from "./API/Food";
+import Order from "./API/Orders";
 
 //db connection
 import ConnectDB from "./database/connections";
@@ -29,6 +30,7 @@ tomato.use(cors());
 tomato.use("/auth",Auth);
 tomato.use("/restaurant",Restaurant);
 tomato.use("/food",Food);
+tomato.use("/order", Order);
 
 tomato.get("/",(req,res) => res.json({message: "running"}));
 
